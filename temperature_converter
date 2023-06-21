@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEMPERATURE CONVERTER</title>
+</head>
+<body>
+    <div id="inputBlock">
+        <h1>WELCOME TO THE TEMPERATURE CONVERTER</h1>
+        <div id="line"></div>
+        <h2 >Enter the temperature in Celsius: </h2>
+        <input type="number" id="temCel">
+        <br>
+        <button onclick="convertTemp()" id="button">Convert to Fahrenhiet</button>
+    </div>
+    <div id="resultBlock">
+        <h2>Temperature in Fahrenhiet:</h2>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function convertTemp(){
+            let cel = document.getElementById("temCel").value;
+            let fah = (cel*9)/5 + 32;
+
+            document.getElementById("result").innerHTML = fah;
+
+        }
+    </script>
+    
+    <style>
+        body{
+            background-color: peachpuff;
+            padding-left:20px;
+        }
+
+        #line{
+            height: 3px;
+            width: auto;
+            background-color: #ce3d19;
+        }
+
+        #inputBlock{
+            padding-left:40px;
+            margin-bottom: 20px;
+        }
+
+        #button{
+            margin-top: 5px;
+        }
+          
+        #resultBlock{
+            padding: 5px;
+            margin-left:40px;
+            border-radius: 15px;
+            background-color: #ce3d19;
+        }
+
+    </style>
+</body>
+</html>
