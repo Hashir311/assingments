@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASE CHANGER</title>
+</head>
+<body>
+    <h1>CASE CHANGER</h1>
+    <div id="line"></div>
+    <h2>Enter your text:</h2>
+    <input type="text" id="txt">
+    <div id="inputs">
+        <button onclick="upper()" id="upp">UPPPER CASE</button>
+        <button onclick="lower()" id="low">lower case</button>
+        <button onclick="capital()" id="cap">Capital case</button>
+    </div>
+
+    <div id="res">
+    </div>
+    
+    <script>
+        function upper(){
+            let str = document.getElementById("txt").value;
+            document.getElementById("res").innerHTML = str.toUpperCase(); 
+        }
+        function lower(){
+            let str = document.getElementById("txt").value;
+            document.getElementById("res").innerHTML = str.toLowerCase();
+        }
+        function capital(){
+            let str = document.getElementById("txt").value;
+            let f = str[0];
+            let l = str.slice(1);
+            document.getElementById("res").innerHTML = f.toUpperCase()+l.toLowerCase(); 
+        }
+    </script>
+
+    <style>
+        body{
+            background-color: aquamarine;
+            text-align: center;
+        }
+        #upp,
+        #low,
+        #cap{
+            height: 40px;
+            font-size: 30px;
+            background-color: hotpink;
+        }
+
+        #inputs{
+            margin-top: 10px;
+        }
+
+        #line{
+            width: auto;
+            height: 5px;
+            background-color: white;
+        }
+        #txt{
+            height: 40px;
+            width: 40%;
+        }
+
+        #res{
+            margin-top: 20px;
+            font-size: 50px;
+            background-color: deeppink;
+        }
+
+    </style>
+</body>
+</html>
