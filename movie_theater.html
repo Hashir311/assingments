@@ -16,9 +16,9 @@
         <input type="number" name="age" id="age_in">
         <br>
         <h3>Are you accompanied by a gaurdian ?</h3>
+        <input type="radio" name="accompany" value="yes" id="options">YES<br>
+        <input type="radio" name="accompany" value="no" id="options">NO<br>
         <br>
-        <input type="radio" name="accompany" value="yes" id="">YES<br>
-        <input type="radio" name="accompany" value="no" id="">NO<br>
         <button id="confirm">Submit</button>
     </div>
     <div id="outputs">
@@ -26,29 +26,55 @@
     </div>
 
     <script>
+
         
     </script>
     
     <style>
         body{
-            background-color: blueviolet;
+            background-color: #3AA6B9;
             text-align: center;
         }
         #title{
+            font-size: 23px;
             text-shadow: 1px 1px 2px black;
             font-weight: bold;
-            color: aliceblue;
+            color: rgb(255, 255, 255);
+        }
+        #inputs{
+            background-color: #FFD0D0;
+            margin:10px;
+            padding: 5px;
+            border-radius: 15px;
+        }
+        #age_lab{
+            font-size: 30px;
         }
         #confirm,
         #age_in{
-            
+            margin: 5px;
+            line-height: 5px;
+            height: 30px;
             width: 40%;
             border-radius: 20px;
-            border-color: blueviolet;
+            color: rgb(0, 0, 0);
+        }
+        #age_in{
+            background-color: #C1ECE4;
+        }
+        #options{
+            height:20px;
+            width:20px;
         }
         #confirm{
             width: 15%;
             font-size: larger;
+            background-color: #C1ECE4;
+        }
+
+        #outputs{
+            margin: 15px;
+            
         }
     </style>
 
