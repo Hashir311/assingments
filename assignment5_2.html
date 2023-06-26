@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loop2</title>
+</head>
+<body>
+    <h1>10 Random Words</h1>
+    <div id="words"></div>
+    <script>
+        let alphabets = "abcdefghijklmnopqrstuvwxyz";
+        let i = 10;
+        let rndm="";
+        while(i){
+            s ="";
+            for(let j=0;j<6;j++){
+                let ind = Math.floor(Math.random()*26);
+                s = s+alphabets.charAt(ind);
+            }
+            rndm += s+"<br>";
+            i--;
+        }
+        document.getElementById("words").innerHTML = rndm;
+    </script>
+    <style>
+        body{
+            background-color: coral;
+        }
+    </style>
+</body>
+</html>
