@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>print_tables</title>
+</head>
+<body>
+    <h1>MATRIX TABLE</h1>
+    <div id="tab">
+        <table id="tablee">
+
+        </table>
+    </div>
+
+    <script>
+        let num1 = prompt("Enter a number:");
+        while(isNaN(num1)){
+            alert("wrong input");
+            num1 = prompt("Enter a number:");
+        }
+        num1 = Number(num1);
+        let num2 = prompt("Enter another number greater than or equal to previous:");
+        while(isNaN(num2)){
+            alert("wrong input");
+            num2 = prompt("Enter a number:");
+        }
+        num2 = Number(num2);
+        while(num2<num1){
+            alert("Number entered is smaller than "+num1);
+            num2 = prompt("Enter another number greater than or equal to previous:");
+        }
+        let table_matrix = "";
+        for(let i=num1;i<=num2;i++){
+            table_matrix += "<tr> ";
+            for(let j=1;j<=10;j++){
+                table_matrix += "<th>  "+(i*j).toString() +"  </th>";
+            }
+            table_matrix += "</tr> ";
+        }
+        document.getElementById("tablee").innerHTML = table_matrix;
+    </script>
+
+    <style>
+        body{
+            background-color: darkolivegreen;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        #tab{
+            margin-left: 40%;
+        }
+    </style>
+    
+    
+</body>
+</html>
