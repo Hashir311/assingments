@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>double content</title>
+</head>
+<body>
+    <script>
+        let s = prompt("enter numbers seperated by spaces");
+        let arr = s.split(" ");
+        let d = prompt("enter the element to be doubled:");
+        alert("Array entered is "+ arr);
+        alert("Doubled array is: "+ double_array(arr,d));
+
+        function double_array(arr,d){
+            for(let i=0;i<arr.length;i++){
+                arr[i]=Number(arr[i]);
+                if (arr[i]==d){
+                    arr[i] += arr[i]
+                }
+            }
+            return arr;
+    }
+    </script>
+    
+</body>
+</html>
