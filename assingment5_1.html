@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loop1</title>
+</head>
+<body>
+    <h2>BEFORE</h2>
+    <div id="before"></div>
+    <h2>AFTER</h2>
+    <div id="after"></div>
+    <script>
+        let animal = ["Dog","Cat","Horse","Lion","Tiger","Panther","Rabbit"];
+        let wrd = "Awesome ";
+        document.getElementById("before").innerHTML = animal;
+        for(let i=0;i<animal.length;i++){
+            animal[i] = wrd + animal[i];
+        }
+        document.getElementById("after").innerHTML = animal;
+    </script>
+    <style>
+        body{
+            background-color: burlywood;
+        }
+    </style>
+</body>
+</html>
