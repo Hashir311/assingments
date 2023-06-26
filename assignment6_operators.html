@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>operator&operands</title>
+</head>
+<body>
+    <h1>THE ANSWER IS</h1>
+    <h1 id="answer"></h1>
+    <script>
+        let op1 = prompt("Enter the first operand:");
+        while(isNaN(op1)){
+            alert("wrong operand... please enter a number");
+            op1 = prompt("Enter the first operand:");
+        }
+        op1 = Number(op1);
+        let op2 = prompt("Enter the second operand:");
+        while(isNaN(op2)){
+            alert("wrong operand... please enter a number");
+            op1 = prompt("Enter the second operand:");
+        }
+        op2 = Number(op2);
+        // while(opr!="+" || opr!="-" || opr!="*" || opr!="/" ){
+        //     alert("wrong operator... please enter a correct operator");
+        //     opr = prompt("Enter the operator(+ , - , / or *)");
+        // }
+        let flag = true;
+        let ans;
+        while(flag){
+            let opr = prompt("Enter the operator(+ , - , / or *)");
+            if(opr=="+"){
+                ans=op1+op2;
+                flag = false;
+            }
+            else if(opr=="-"){
+                ans=op1-op2;
+                flag = false;
+            }
+            else if(opr=="*"){
+                ans = op1*op2;
+                flag = false;
+            }
+            else if(opr=="/"){
+                if(op2 == 0){
+                    ans = "Cannot divide by Zero";
+                }
+                else{
+                    ans = op1/op2;
+                }
+                
+                flag = false;
+            }
+            else{
+                alert("wrong operator... please enter a correct operator");
+            }
+        }
+        document.getElementById("answer").innerHTML = ans;
+    </script>
+    <style>
+        body{
+            background-color: darkorange;
+            text-align: center;
+        }
+        h1{
+            margin-bottom: 50px;
+        }
+    </style>
+</body>
+</html>
