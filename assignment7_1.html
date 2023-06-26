@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hide_characters</title>
+</head>
+
+<h1>***HIDE CHARACTERS***</h1>
+<input type="text" id="inpt">
+<button onclick="printstr()">Hide</button>
+<h2 id="opt"></h2>
+<body>
+    <script>
+        function printstr(){
+            let s = document.getElementById("inpt").value;
+            let l = s.length;
+            let ss = "";
+            for(let i=0;i<l;i++){
+                if(i==0 || i==l-1){
+                    ss += s.charAt(i);
+                }
+                else{
+                    ss += "*";
+                }
+            }
+            document.getElementById("opt").innerHTML = ss;
+        }
+    </script>
+
+    <style>
+        body{
+            background-color: fuchsia;
+            text-align:center;
+        }
+    </style>
+    
+</body>
+</html>
