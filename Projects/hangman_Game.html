@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HANGMAN GAME</title>
+</head>
+<body>
+
+    <div id="title">
+        <h3 id="tt">THE</h3>
+        <h1 id="ttl"><p id="ttl">HANGMAN</p></h1>
+        <h3 id="tt">GAME</h3>
+    </div>
+    <div id="input_mssg">
+        <p>I am thinking of a word... take a guess and enter an alphabet</p>
+    </div>
+    <input type="text" name="input" id="input">
+    <br>
+    <button onclick="check()" id="input_btn">CHECK</button>
+    <div >
+        <p id="output"></p>
+    </div>
+    <div id="output_mssg">
+    </div>
+    
+    <script>
+        alert("Rules for the game:\n1.You have 5 chances\n2.One character at a time\n3.Wrong and Invalid alphabet will take away a chance");
+        let flag=false;
+        let words = ["puzzle", "planet", "excite", "invalid","length","brave", "chance", "diamond", "sunset", "whisper", "echoes", "symphony", "journey", "serene", "victory", "mystic", "explore", "harmony", "captain", "savor", "delight", "azure", "sparkle", "fierce", "velvet", "rhythm", "lively", "quest", "galaxy", "quest", "mirthful", "twinkle", "vivid", "dreamer", "savor", "vivid", "zephyr", "vivid","whiskers", "journey", "galaxy", "whisper", "quicksand", "mystic", "enchant", "velvet", "sapphire", "fantasy", "marvel", "radiant", "twinkle", "azure", "cascade", "shimmer", "mystery", "enigma", "savor", "azure", "radiant", "twinkle"];
+        let ind = Math.floor(Math.random()*words.length);
+        let rndm = words[ind];
+        rndm = rndm.toUpperCase();
+        console.log(rndm);
+        let dash=[];
+        for(let i=0;i<rndm.length;i++){
+            dash.push("_");
+        }
+        console.log(dash);
+        let chance = 5;
+        let wrd_len=0;
+        let d = {}
+        document.getElementById("output").innerHTML = dash.join(" ");
+
+        function check(){
+            
+            goto: while(wrd_len!=rndm.length && chance){
+                // document.getElementById("input").value = "";
+                let a=document.getElementById("input").value;
+                if(a.length != 1 || a.toLowerCase() == a.toUpperCase()){
+                    chance--;
+                    if(chance==0){
+                        flag=true;
+                        document.getElementById("input_mssg").innerHTML = "";
+                        document.getElementById("output_mssg").innerHTML = "You have no chances left<br>The word was <b>"+rndm+"</b> <br>You can always retry...";
+                    }
+                    else{
+                        let x=document.getElementById("input");
+                        x.style.borderColor = "red";
+                        document.getElementById("output_mssg").innerHTML = "Invalid entry";
+                        document.getElementById("input_mssg").innerHTML = "Now you have "+chance+" turn(s) left<br>Enter an Alphabet";
+                        break goto;
+                    }
+                    
+                }
+                document.getElementById("output_mssg").innerHTML = "";
+                a=a.toUpperCase();
+                console.log(d);
+                let x=document.getElementById("input");
+                x.style.borderColor = "white";
+                if(rndm.includes(a)){
+                    if(a in d){
+                        document.getElementById("input_mssg").innerHTML = "This alphabet has already been used";
+                        document.getElementById("output").innerHTML = dash.join(" ");
+                    }
+                    else{
+                        d[a]=true;
+                        for(let i=0;i<rndm.length;i++){
+                            if(a==rndm.charAt(i)){
+                                dash[i] = a;
+                                wrd_len++;
+                            }
+                        }
+                        if(wrd_len==rndm.length){
+                            flag=true;
+                            document.getElementById("output").innerHTML = dash.join(" ");
+                            document.getElementById("input_mssg").innerHTML = "";
+                            document.getElementById("output_mssg").innerHTML = "Congratulations, you guessed the word <br> You had <b>"+chance+"</b> turn(s) left";
+                        }
+                        else{
+                            document.getElementById("input_mssg").innerHTML = "Spot on... <br> You still have <b>"+chance+"</b> turns left";
+                            document.getElementById("output").innerHTML = dash.join(" ");
+                        }
+                    }
+                }
+                else{
+                    chance=chance-1;
+                    if(chance==0){
+                        flag=true;
+                        document.getElementById("input_mssg").innerHTML = "";
+                        document.getElementById("output_mssg").innerHTML = "You have no chances left<br>The word was <b>"+rndm+"</b> <br>You can always retry...";
+                    }
+                    else {
+                        if(!flag){
+                            document.getElementById("input_mssg").innerHTML = "Sorry, the entered alphabet is not in the word<br>You have <b>"+chance+"</b> turn(s) left<br>Enter an alphabet";
+                        }
+                    }
+                }
+                break goto;
+            }
+            if(flag){
+                let c=document.getElementById("input");
+                let d=document.getElementById("input_btn");
+                // c.style.display = none;
+                // d.style.display = none;
+                c.remove();
+                d.remove();
+                let e =document.getElementById("output_mssg");
+                e.style.color="white";
+                e.style.fontSize = "30px";
+                setTimeout(function() {
+                    let inp=confirm("Do you want to retry ?");
+                    if(inp){
+                        location.reload();
+                    }
+                    else{
+                        window.close();
+                    }
+                }, 5000);
+            }
+        }
+    </script>
+
+    <style>
+        body{
+            text-align: center;
+            background-color: #22A699;
+            
+        }
+        #title{
+            line-height: 65px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            color: #F2BE22;
+            text-shadow: 2px 2px 4px rgb(0, 0, 0);
+        }
+        #tt{
+            font-size: 50px;
+            margin: 0;
+        }
+        #ttl{
+            font-size: 120px;
+            margin: 0;
+            /* color:#F29727 */
+        }
+        #input{
+            margin: 0px;
+            height: 20px;
+            border-color: white;
+            border-width: 2px;
+            border-radius: 10px;
+        }
+        button{
+            font-size: larger;
+            margin: 8px;
+            border-width: 2px;
+            border-color: #ffffff;
+            color:#ffffff;
+            background-color: #F266AB;
+            border-radius: 25px;
+        }
+        #output{
+            font-size: xx-large;
+            color: #ffffff;
+        }
+    </style>
+</body>
+</html>
