@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>star pattern</title>
+</head>
+
+<body>
+    <h1>The STAR pattern is as follows</h1>
+    <h2 id="pattern"></h2>
+
+    <script>
+        let n = prompt("Enter the Number of rows");
+        while (isNaN(n) || Number(n) < 1) {
+            alert("The input should be a number greater than 0");
+            n = prompt("Enter the number of rows:");
+        }
+        n = Number(n);
+        let s = "";
+        for (let i = n; i >= 1; i--) {
+            for (let j = i; j > 0; j--) {
+                s += "* "
+            }
+            s += "<br>";
+        }
+        document.getElementById("pattern").innerHTML = s;
+    </script>
+
+    <style>
+        body {
+            background-color: darkorchid;
+        }
+
+        h2 {
+            color: antiquewhite;
+        }
+    </style>
+</body>
+
+</html>
