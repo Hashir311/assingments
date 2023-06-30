@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>alternate_range_triangle</title>
+</head>
+<body>
+    <script>
+        function makeTriangle(start, end, myChar){
+            let flag = true;
+            for(let i=0;i<=end;i++){
+                for(let j=0;j<i;j++){
+                    if(i<start){
+                        document.write("*"+" ");
+                    }
+                    else{
+                        if(flag){
+                            document.write(i+" ");
+                        }
+                        else{
+                            document.write(myChar+" ");
+                        }
+                    }
+                }
+                if(i>=start){
+                    if(flag){
+                        flag=false;
+                    }
+                    else{
+                        flag=true;
+                    }
+                }
+                document.writeln("<br>")
+            }
+        }
+
+        function main(){
+            let start = prompt("Enter the start for the range: ");
+            console.log(isNaN(start));
+            while(isNaN(start) || Number(start)<0){
+                start = prompt("Invalid! \nEnter a positive number");
+            }
+            start=Number(start);
+
+            let end = prompt("Enter the end for the range: ");
+            while(isNaN(end) || Number(end)<start){
+                end = prompt("Invalid!\nEnter a positive number that is grater than the start value:");
+            }
+            end= Number(end);
+
+            let c = prompt("Enter a character: ");
+            while(c.length != 1){
+                c = prompt("Invalid!! \nEnter a character: ");
+            } 
+            
+            makeTriangle(start,end,c);
+        }
+        main();
+    </script>
+    <style>
+        body{
+            background-color: blanchedalmond;
+            font-size: larger;
+            padding: 30px;
+        }
+    </style>
+    
+</body>
+</html>
