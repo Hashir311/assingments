@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sum</title>
+</head>
+
+<body>
+    THE SUM OF THE ARRAY ELEMNTS IS:
+    <h1 id="result">
+    </h1>
+
+    <script>
+        let a = prompt("[1,2, ... , n]\nEnter the size of an array:");
+        while (isNaN(a) || Number(a) < 1) {
+            a = prompt("Enter a positive number:")
+        }
+        a = Number(a);
+        let result = 0;
+        for (let i = a; i >= 0; i--) {
+            result += i;
+        }
+        document.getElementById("result").innerHTML = result;
+    </script>
+
+    <style>
+        body {
+            background-color: beige;
+            text-align: center;
+            font-size: xx-large;
+        }
+    </style>
+
+</body>
+
+</html>
