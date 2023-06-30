@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>color flag</title>
 </head>
+
 <body>
     <script>
-        function flag1(row,colr,colr2){
-            let column = row*2;
-            let c= (colr.charAt(0)).toUpperCase();
+        function flag1(row, colr, colr2) {
+            let column = row * 2;
+            let c = (colr.charAt(0)).toUpperCase();
             document.writeln('<p id="up">');
-            for(let i=0;i<(row/3);i++){
-                for(let j=0;j<column;j++){
+            for (let i = 0; i < (row / 3); i++) {
+                for (let j = 0; j < column; j++) {
                     document.write(c);
                 }
                 document.writeln("<br>");
@@ -20,15 +22,15 @@
             document.writeln('</p>');
             let styl = document.getElementById("up");
             styl.style.color = colr;
-            flag2(row,colr2)
+            flag2(row, colr2)
         }
 
-        function flag2(row,colr){
-            let column = row*2;
-            let c= (colr.charAt(0)).toUpperCase();
+        function flag2(row, colr) {
+            let column = row * 2;
+            let c = (colr.charAt(0)).toUpperCase();
             document.writeln('<p id="down">');
-            for(let i=0;i<(row*2/3);i++){
-                for(let j=0;j<column;j++){
+            for (let i = 0; i < (row * 2 / 3); i++) {
+                for (let j = 0; j < column; j++) {
                     document.write(c);
                 }
                 document.writeln("<br>");
@@ -38,15 +40,15 @@
             styl.style.color = colr;
         }
 
-        function main(){
+        function main() {
             let r = prompt("Enter the number of rows:\n>Rows must not be less than 6\n>Rows must be divisible by 3");
-            while(isNaN(r) || Number(r)<6 || Number(r)%3 !=0){
+            while (isNaN(r) || Number(r) < 6 || Number(r) % 3 != 0) {
                 r = prompt("Please enter a valid number >= 6 and divisible by 3");
             }
             r = Number(r);
             let c1 = prompt("Enter a valid colour:");
             let c2 = prompt("Enter another valid colour:");
-            flag1(r,c1,c2);
+            flag1(r, c1, c2);
             // flag2(r,c2);
         }
 
@@ -54,16 +56,16 @@
     </script>
 
     <style>
-        body{
+        body {
             background-color: lightgray;
             font-size: xx-large;
             text-align: center;
         }
-        p{
-            margin:0px
+
+        p {
+            margin: 0px
         }
     </style>
-
-    
 </body>
+
 </html>
