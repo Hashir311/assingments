@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draw triangle 1</title>
+</head>
+<body>
+    <h1>Characters Triangle</h1>
+    <label id="r" for="rows"> Enter the Number of rows:</label>
+    <input type="text" id="rows">
+    <br>
+    <label id="r"> Choose characters:</label>
+    <input type="checkbox" id="chkbx1" name="chk" value="!"><label id="c" for="chkbx1">!</label>
+    <input type="checkbox" id="chkbx2" name="chk" value="@"><label id="c" for="chkbx2">@</label>
+    <input type="checkbox" id="chkbx3" name="chk" value="#"><label id="c" for="chkbx3">#</label>
+    <input type="checkbox" id="chkbx4" name="chk" value="$"><label id="c" for="chkbx4">$</label>
+    <input type="checkbox" id="chkbx5" name="chk" value="&"><label id="c" for="chkbx5">&</label>
+    <input type="checkbox" id="chkbx6" name="chk" value="*"><label id="c" for="chkbx6">*</label>
+    <br> 
+    <button onclick="draw()"><b>DRAW</b></button>
+    <div id="result" onclick="hide()"></div>
+
+
+    <script>
+        let f = true;
+        const draw = ()=>{
+            let r = document.getElementById("rows").value;
+            if(isNaN(r) || r==""){
+                alert("Enter Number of Rows");
+                location.reload();
+            }
+            else{
+                let chrs = document.querySelectorAll('input[name="chk"]:checked');
+                let l = chrs.length;
+                if(l==0){
+                    alert("Select atleast one character");
+                    location.reload();
+                }
+                let c=0;
+                for(let i = 1;i<=r;i++){
+                    for(let j =0;j<i;j++){
+                        let ch = chrs[c%l].value;
+                        c += 1;
+                        document.getElementById("result").innerHTML += ch;
+                    }
+                    document.getElementById("result").innerHTML+="<br>";
+                }
+            }
+        }
+        const hide=()=>{
+            console.log(f);
+            if(f){
+                a = document.getElementById("result");
+                a.style.display = 'none';
+                f=false;
+            }
+            else{
+                a = document.getElementById("result");
+                a.style.display= 'block';
+                f=true;
+            }
+            
+        }
+    </script>
+
+    <style>
+        body{
+            background-color: crimson;
+            margin-left: 20px;
+        }
+        h1{
+            font-size: 80px;
+        }
+        #r,
+        rows{
+            font-size: 30px;
+        }
+        #c{
+            margin:5px;
+            margin-right: 15px;
+            font-size: 30px;
+        }
+        #chkbx1,
+        #chkbx2,
+        #chkbx3,
+        #chkbx4,
+        #chkbx5,
+        #chkbx6{
+            margin:10px;
+            height: 20px;
+            width:20px;
+            color: gray;
+        }
+        button{
+            height: 30px;
+            width:auto;
+            background-color: white;
+            border-radius: 20px;
+        }
+        div{
+            width:max-content;
+            height:auto;
+        }
+
+    </style>
+</body>
+</html>
