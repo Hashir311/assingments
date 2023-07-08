@@ -23,8 +23,9 @@
 
 
     <script>
-        let f = true;
         const draw = ()=>{
+            a = document.getElementById("result");
+            a.style.display= 'block';
             let r = document.getElementById("rows").value;
             if(isNaN(r) || r==""){
                 alert("Enter Number of Rows");
@@ -49,18 +50,8 @@
             }
         }
         const hide=()=>{
-            console.log(f);
-            if(f){
-                a = document.getElementById("result");
-                a.style.display = 'none';
-                f=false;
-            }
-            else{
-                a = document.getElementById("result");
-                a.style.display= 'block';
-                f=true;
-            }
-            
+            a = document.getElementById("result");
+            a.style.display = 'none';
         }
     </script>
 
@@ -97,10 +88,7 @@
             width:auto;
             background-color: white;
             border-radius: 20px;
-        }
-        div{
-            width:max-content;
-            height:auto;
+            margin-bottom: 20px;
         }
 
     </style>
