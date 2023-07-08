@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Qoute</title>
+</head>
+<body id="all">
+    <h1 id="title">QOUTE OF THE DAY</h1>
+    <button onclick="generate()">Generate New</button><br><br>
+    <div id="q1">
+        "
+    </div>
+    <h1 id="qoute">Time and tide wait for none</h1>
+    <div id="q2">
+        "
+    </div>
+
+    <style>
+        body{
+            text-align: center;
+            margin:40px;
+            background-color: chocolate;
+        }
+        #title{
+            font-size: 80px;
+        }
+        button{
+            color: aliceblue;
+            height:40px;
+            width:120px;
+            background-color: #333333;
+            border-width: 0px;
+        }
+        p{
+            font-size: 100px;
+        }
+        h1{
+            margin: 5px;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+        #q1{
+            text-align: left;
+        }
+        #q2{
+            text-align: right;
+        }
+        #q1,
+        #q2{
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 130px;
+        }
+    </style>
+
+    <script>
+        let qoutes = [
+                        "Be yourself; everyone else is already taken.",
+                        "In three words I can sum up everything I've learned about life: it goes on.",
+                        "The only way to do great work is to love what you do.",
+                        "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+                        "The best revenge is massive success.",
+                        "You miss 100% of the shots you don't take.",
+                        "The only thing necessary for the triumph of evil is for good men to do nothing.",
+                        "It does not matter how slowly you go as long as you do not stop.",
+                        "The future belongs to those who believe in the beauty of their dreams.",
+                        "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
+                        "Life is what happens when you're busy making other plans.",
+                        "The only limit to our realization of tomorrow will be our doubts of today.",
+                        "It is never too late to be what you might have been.",
+                        "We become what we think about.",
+                        "The best way to predict the future is to create it.",
+                        "The only true wisdom is in knowing you know nothing.",
+                        "A journey of a thousand miles begins with a single step.",
+                        "I have not failed. I've just found 10,000 ways that won't work.",
+                        "Believe you can and you're halfway there.",
+                        "In the middle of every difficulty lies opportunity.",
+                        "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.",
+                        "Happiness is not something ready-made. It comes from your own actions.",
+                        "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+                        "You must be the change you wish to see in the world.",
+                        "Don't count the days, make the days count.",
+                        "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+                        "Change your thoughts and you change your world.",
+                        "Twenty years from now you will be more disappointed by the things that you didn't do than by the ones you did do.",
+                        "Education is the most powerful weapon which you can use to change the world.",
+                        "I can't change the direction of the wind, but I can adjust my sails to always reach my destination.",
+                        "In the end, it's not the years in your life that count. It's the life in your years.",
+                        "Do not judge me by my successes, judge me by how many times I fell down and got back up again."
+                    ]
+        let col = [
+                    "#DCECEA", // Mint Green
+                    "#C1E1C5", // Pastel Green
+                    "#E0F2F1", // Aqua
+                    "#B2EBF2", // Light Blue
+                    "#EAF2F8", // Baby Blue
+                    "#F1F8E9", // Pale Green
+                    "#E1F5FE", // Pale Cyan
+                    "#E0F7FA", // Powder Blue
+                    "#F0F4C3", // Pale Yellow
+                    "#E0E0E0", // Platinum
+                    "#F5F5F5", // White Smoke
+                    "#F0FFFF", // Azure
+                    "#E6F0F3", // Glacial Blue
+                    "#E6F2FF", // Alice Blue
+                    "#F4F9F9", // Light Cyan
+                    "#F0FFF0", // Honeydew
+                    "#F5FFFA", // Mint Cream
+                    "#E0FFFF", // Light Cyan
+                    "#F0F8FF", // Alice Blue
+                    "#F0FFFF", // Azure
+                    "#F5F5DC", // Beige
+                    "#FFF5EE", // Seashell
+                    "#FAF0E6", // Linen
+                    "#F5F5F0", // Ivory
+                    "#F8F8FF", // Ghost White
+                    "#FFF0F5", // Lavender Blush
+                    "#FDF5E6", // Old Lace
+                    "#FAEBD7", // Antique White
+                    "#5DADE2", // Steel Blue
+                    "#5499C7", // Dark Sky Blue
+                    "#85C1E9", // Dodger Blue
+                    "#2874A6", // Dark Blue
+                    "#1F618D", // Midnight Blue
+                    "#1ABC9C", // Ocean Green
+                    "#17A589", // Blue Green
+                    "#48C9B0", // Medium Turquoise
+                    "#138D75", // Jungle Green
+                    "#73C6B6", // Sea Green
+                    "#D4E6F1", // Light Steel Blue
+                    "#7FB3D5", // Light Sky Blue
+                    "#82E0AA", // Mint
+                    "#5499C7", // Dark Sky Blue
+                    "#85C1E9", // Dodger Blue
+                    "#2874A6", // Dark Blue
+                    "#1F618D", // Midnight Blue
+                    "#1ABC9C", // Ocean Green
+                    "#17A589", // Blue Green
+                    "#48C9B0", // Medium Turquoise
+                    "#138D75"  // Jungle Green
+                    ]
+
+        console.log(qoutes.length);
+        function generate(){
+            let indc =  Math.floor(Math.random()*(col.length));
+            let ind = Math.floor(Math.random()*(qoutes.length));
+            console.log(ind);
+            let q = qoutes[ind];
+            document.getElementById("all").style.backgroundColor = col[indc];
+            document.getElementById("qoute").innerHTML=q;
+        }
+
+    </script>
+    
+</body>
+</html>
