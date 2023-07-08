@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+<body>
+    <h1>LIBRARY MANAGEMENT</h1>
+    <div id="line"></div><br>
+    <div id="line"></div>
+    <div id="inputs">
+        <div id="add_inpt">
+            <h2><b>Add Book</b></h2>
+            <input id="bkname" type="text">
+            <button onclick="add()">ADD</button>
+            <p id="status1"></p>
+        </div>
+        <div id="search_inpt">
+            <h2><b>Search Book</b></h2>
+            <input id="bksearch" type="text">
+            <button onclick="search()">SEARCH</button>
+            <p id="status2"></p>
+         </div>
+    </div>
+    <button onclick="record()">SEE ALL BOOKS</button>
+    <p id="all_books"></p>
+
+    <script>
+        let books = {};
+        function add(){
+            document.getElementById("all_books").innerHTML=" ";
+            document.getElementById("status2").innerHTML = " ";
+            let bk = document.getElementById("bkname").value;
+            if(bk==""){
+                document.getElementById("status1").innerHTML = " ";
+                alert("Enter a valid book name");
+                return;
+            }
+            let b = bk.toLowerCase();
+            let alrt = document.getElementById("status1");
+            if(b in books){
+                alrt.innerHTML = "...";
+                setTimeout(function(){
+                    alrt.style.color="red";
+                    alrt.innerHTML = "Book already in records";
+                },500)
+            }
+            else{
+                books[b]=bk;
+                alrt.innerHTML = "...";
+                alrt.style.color="green";
+                setTimeout(function(){
+                    alrt.innerHTML = "Book added successfully";
+                },500)
+            }
+            console.log(books);
+        }
+        function search(){
+            document.getElementById("status1").innerHTML = " ";
+            document.getElementById("all_books").innerHTML= " ";
+            let bk = document.getElementById("bksearch").value;
+            if(bk==""){
+                document.getElementById("status2").innerHTML = " ";
+                alert("Enter a valid search key");
+                return;
+            }
+            let b = bk.toLowerCase();
+            const func=(bb)=>{
+                if(bb.includes(b)){
+                    return books[bb];
+                }
+            }
+            let c = Object.keys(books);
+            res = c.filter(func);
+            if(res.length>0){
+                document.getElementById("status2").style.color = "green";
+                document.getElementById("status2").innerHTML = "...";
+                setTimeout(function(){
+                    document.getElementById("status2").innerHTML = "The book(s) matching the search are:<br><b>"+res.join("<br>")+"</b>";
+                },500)
+                
+            }
+            else{
+                document.getElementById("status2").style.color = "red";
+                document.getElementById("status2").innerHTML = "...";
+                setTimeout(function(){
+                    document.getElementById("status2").innerHTML = "No match found";
+                },500)
+                
+            }
+        }
+
+        function record(){
+            document.getElementById("status2").innerHTML = " ";
+            document.getElementById("status1").innerHTML = " ";
+            let c = Object.values(books);
+            if(c.length>0){
+                document.getElementById("all_books").innerHTML= c.join("<br>");
+            }
+            else{
+                document.getElementById("all_books").innerHTML= "Currently no books in library";
+            }
+        }
+    </script>
+
+    <style>
+        body{
+            text-align: center;
+            background-color: darkkhaki;
+        }
+        
+        #line{
+            height:5px;
+            width: auto;
+            background-color: white;
+        }
+        h1{
+            margin: 5px;
+            padding: 1px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 80px;
+        }
+        #inputs{
+            margin:40px;
+            display:flex;
+            justify-content: space-evenly;
+        }
+        input,
+        button{
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+        }
+        #add_inpt,
+        #search_inpt{
+            text-align: center;
+        }
+        #status2{
+            justify-content: left;
+        }
+    </style>
+    
+</body>
+</html>
