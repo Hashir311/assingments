@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle level 2</title>
+</head>
+<body>
+    <div id="title"><b>DRAW-TRAINGLES</b></div>
+    <div id="inputs">
+        <div id="inpt">
+            <h4>Enter the value to start with</h4>
+            <input type="text" id="val" value="10">
+        </div>
+        <div id="line"></div>
+        <div id="col_choice">
+            <h4>Select the color for triangle</h4>
+            <select name="color_select" id="dropdown">
+                <option value="red" selected>RED</option>
+                <option value="blue">BLUE</option>
+                <option value="green">GREEN</option>
+                <option value="yellow">YELLOW</option>
+            </select>
+        </div>
+        <div id="line"></div>
+        <div id="shape">
+            <h4>Select the shape for the triangle</h4>
+            <input type="radio" id="bttm" name="col" value="bttm" checked> <label for="bttm">Base at Bottom</label>
+            <br>
+            <input type="radio" id="top" name="col" value="top"> <label for="top">Base at Top </label>
+        </div>
+    </div>
+    <div id="bttn">
+        <button id="submit" onclick="draw()"><h4>DRAW</h4></button>
+    </div>
+    <div id="matrx">
+        <table id="tablee">
+            <tr>
+                <th id="1">CELL 1</th>
+                <th id="2">CELL 2</th>
+            </tr>
+            <tr>
+                <th id="3">CELL 3</th>
+                <th id="4">CELL 4</th>
+            </tr>
+        </table>
+    </div>
+
+
+    <script>
+        let col = ["1","2","3","4"];
+        let c = 0;
+        function top_triangle(n){
+            let s = "";
+            for(let i = 0; i < 5; i++){
+                for(let j = 0; j <= i; j++){
+                    s += n.toString();
+                    n--;
+                }
+                s += "<br>";
+            } 
+            return s;
+
+        }
+        function bottom_triangle(n){
+            let s = "";
+            for(let i = 5; i > 0; i--){
+                for(let j = i; j > 0; j--){
+                    s += n.toString();
+                    n--;
+                }
+                s += "<br>";
+            } 
+            return s;
+        }
+
+        function draw(){
+            let tri;
+            let n = document.getElementById("val").value;
+            let clr = document.getElementById("dropdown").value;
+            let q = document.querySelector('input[name="col"]:checked').value;
+            if(q=="bttm"){
+                tri = top_triangle(Number(n));
+            }
+            else{
+                tri = bottom_triangle(Number(n));
+            }
+            let cell = document.getElementById(col[c]);
+            cell.style.color = clr;
+            document.getElementById("submit").style.backgroundColor = clr;
+            cell.innerHTML = tri;
+            c = (c+1)%4;
+        }
+
+    </script>
+
+
+    <style>
+        body{
+            background-color: lightcoral;
+        }
+        #title{
+            text-align: center;
+            font-size: 80px;
+        }
+        #line{
+            width: 2px;
+            height: auto;
+            background-color: rgb(255, 255, 255);
+        }
+
+        #inputs,#matrx{
+            margin: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #matrx{
+            margin: 30px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        #bttn{
+            text-align: center;
+        }
+        button{
+            border-width: 0px;
+            border-radius: 50%;
+            box-shadow: 2px 2px 4px black;;
+        }
+
+    </style>
+</body>
+</html>
