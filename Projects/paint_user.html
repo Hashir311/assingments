@@ -60,7 +60,8 @@
                 let new_user = new user(fn,ln,em,[c1,c2,c3]);
                 user_data.push(new_user);
                 console.log(user_data);
-                alert("You have successfully registered as:\n"+fn+ln);
+                alert("You have successfully registered as:\n"+fn+" "+ln);
+                location.reload();
             }
             else{
                 let info = "";
