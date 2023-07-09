@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>base convertor</title>
+</head>
+<body>
+    <div id="title">BASE CONVERSION</div>
+    <div id="line"></div>
+    <div id="home">
+        <div id="interface">
+            <div id="inputs">
+                <fieldset>
+                    <legend><h1>INPUTS</h1></legend>
+                    <div id="inpt">
+                        <div>
+                            <label for="int">Enter unsigned integer:</label>
+                            <input type="text" id="int">
+                        </div>
+                    </div>
+                    <div id="choices">
+                        <div><input type="radio" name="conv" id="con1" value=2 checked> To Binary<br></div>
+                        <div><input type="radio" name="conv" id="con2" value=8> To Octal<br></div>
+                        <div><input type="radio" name="conv" id="con3" value=16> To Hexadecimal<br></div>
+                    </div>
+                    <div id="bttns">
+                        <div><button onclick="main()">CONVERT</button></div>
+                        <div><button onclick="reset()">RESET</button></div>
+                        <div><button onclick="hist()">HISTORY</button></div>
+                        <div><button onclick="hist_reset()">RESET HISTORY</button></div>    
+                    </div>
+                </fieldset>
+            </div>
+            <div id="outputs">
+                <fieldset>
+                    <legend><h1>OUTPUTS</h1></legend>
+                    <h1 id="opts"></h1>
+                </fieldset>
+            </div>
+        </div>
+        <div id="history">
+            <fieldset>
+                <legend><h2 >HISTORY</h2></legend>
+                <ul id="hh"></ul>
+            </fieldset>
+        </div>
+    </div>
+
+    <script>
+        let hid=document.getElementById("history");
+        hid.style.display = "none";
+        let h = document.getElementById("hh");
+        h.innerHTML = "";
+        let opt = document.getElementById("opts");
+
+        function basecon(num,b){
+            let res = "";
+            while(num){
+                let r = num%b;
+                num = Math.floor(num/b);
+                if(r<10){
+                    res = r.toString()+res;
+                }
+                else{
+                    switch(r){
+                        case 10: r="A";
+                                 break;
+                        case 11: r="B";
+                                 break;
+                        case 12: r="C";
+                                 break;
+                        case 13: r="D";
+                                 break;
+                        case 14: r="E";
+                                 break;  
+                        case 15: r="F";
+                                 break;              
+                    }
+                    res = r+res;
+                }
+            }
+            return res;
+        }
+
+        function reset(){
+            hid.style.display = "none";
+            document.getElementById("int").value = "";
+            document.getElementById("con1").checked = "checked";
+            opts.innerHTML = "";
+        }
+
+        function hist(){
+            hid.style.display = "none";
+            hid.style.display = "block";
+            opts.innerHTML = "";
+        }
+
+        function hist_reset(){
+            h.innerHTML = "";
+            hid.style.display = "none";
+            opts.innerHTML = "";
+        }
+
+        function main(){
+            hid.style.display = "none";
+            let val = document.getElementById("int").value;
+            if(isNaN(val) || val == "" || Number(val)<0){
+                alert("ENTER A VALID POSITIVE NUMBER");
+                return;
+            }
+            val = Number(val);
+            let q = document.querySelector('input[name="conv"]:checked').value;
+            let res;
+            if(val==0){
+                res = "0";
+            }
+            else{
+                res = basecon(val,q);
+            }
+            opts.innerHTML = res;
+            let s;
+            if(q==2){
+                s = "Decimal --> Binary:<br>"+val.toString()+"-->"+res;
+            }
+            else if(q==8){
+                s = "Decimal --> Octal:<br>"+val.toString()+"-->"+res;
+            }
+            else{
+                s = "Decimal --> Hexadecimal:<br>\t"+val.toString()+"-->"+res;
+            }
+            h.innerHTML +="<li>"+s+"<br></li>";
+
+        }
+    </script>
+    
+    <style>
+        html,body{
+            background-color: rgb(206, 185, 67);
+            width: 100%;
+            height: 100vh;
+        }
+        #line{
+            height:5px;
+            width: auto;
+            background-color: white;
+        }
+        fieldset{
+            height: 80%;
+            padding: 30px;
+        }
+        #title{
+            text-align: center;
+            margin: 10px;
+            font-size: 80px;
+        }
+        #home{
+            display: flex;
+            width: 100%;
+            height:80%;
+        }
+        h1,h2{
+            margin: 0px;
+        }
+        #inputs,
+        #outputs{
+            height: 50%;
+        }
+        #opts{
+            text-align: center;
+            font-size: 50px;
+        }
+        #bttns,
+        #choices,
+        #inpt{
+            margin: 20px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        #history{
+            display:none;
+            margin:5px;
+            width: 25%;
+            height:100%;
+        }
+        #history fieldset{
+            height:90%;
+        }
+        #inpt{
+            font-size: 20px;
+        }
+        buttons{
+            border-radius: 10px 0px 10px 0px;
+            background-color: rgb(207, 204, 183);
+            box-shadow: 2px 2px 4px black;;
+        }
+        button:hover{
+            background-color:gold;
+            border-width: 0px;
+        }
+        #interface{
+            width: 75%;
+            height: 100%;
+        }
+    </style>
+    
+</body>
+</html>
