@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAINT</title>
+</head>
+<body>
+    <h1>USER REGISTRATION</h1>
+    <h2>FOR PAINT</h2>
+    <h3>Enter your first name:</h3>
+    <input type="text" id="fname">
+    <h3>Enter your last name:</h3>
+    <input type="text" id="lname">
+    <h3>Enter your email id:</h3>
+    <input type="text" id="email"><br>
+    <h3>Enter your color choice:</h3>
+    <h5>Color 1 || Color 2 || Color 3</h5>
+    <input type="color" id="color1" value="#FFFF00">
+    <input type="color" id="color2" value="#FFFF00">
+    <input type="color" id="color3" value="#FFFF00"><br>
+    <br>
+    <button onclick="register()">Register</button>
+
+    <script>
+        let user_data = [];
+        const colorCodes = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#00ffff", "#ff00ff", "#000000", "#ffffff","#808080","#a52a2a","#ffa500", "#800080"  ];
+        
+        function user(fn,ln,em,col){
+            this.fanme = fn;
+            this.lname = ln;
+            this.email = em;
+            this.colors = col;
+        }
+
+        function register(){
+            let fn = document.getElementById("fname").value;
+            let ln = document.getElementById("lname").value;
+            let em = document.getElementById("email").value;
+            let c1 = document.getElementById("color1").value;
+            let c2 = document.getElementById("color3").value;
+            let c3 = document.getElementById("color3").value;
+            console.log(c1,c2,c3);
+            const verify = ()=>{
+                let reject = [];
+                if(colorCodes.includes(c1)){
+                    reject.push([1,c1]);
+                }
+                if(colorCodes.includes(c2)){
+                    reject.push([2,c2]);
+                }
+                if(colorCodes.includes(c3)){
+                    reject.push([3,c3]);
+                }
+                console.log(reject);
+                return reject;
+            }
+            let ver = verify();
+            if(ver.length==0){
+                let new_user = new user(fn,ln,em,[c1,c2,c3]);
+                user_data.push(new_user);
+                console.log(user_data);
+                alert("You have successfully registered as:\n"+fn+ln);
+            }
+            else{
+                let info = "";
+                for(let c of ver){
+                    info += "Choice "+c[0].toString()+c[1]+"\n";
+                }
+                alert("Unable to register!!!\nThe following color choices of yours are OUT OF STOCK:\n"+info+"Please choose some other colors");
+            }
+
+        }
+    </script>
+
+    <style>
+        html{
+            width: auto;
+            height: 100%;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background-image: url(https://static.vecteezy.com/system/resources/thumbnails/020/933/072/small/abstract-blur-gradient-background-vector.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #color1,
+        #color2,
+        #color3{
+            margin: 12px;
+            margin-top: 0px;
+        }
+        h1{
+            margin-bottom: 2px;
+            font-size: 80px;
+        }
+        h2{
+            margin-top:1px;
+            font-size: 50px;
+        }
+        h5{
+            margin-bottom: 2px;
+        }
+    </style>
+</body>
+</html>
