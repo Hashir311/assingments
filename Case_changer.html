@@ -11,9 +11,9 @@
     <h2>Enter your text:</h2>
     <input type="text" id="txt">
     <div id="inputs">
-        <button onclick="upper()" id="upp">UPPPER CASE</button>
-        <button onclick="lower()" id="low">lower case</button>
-        <button onclick="capital()" id="cap">Capital case</button>
+        <button onclick="upper()" id="upp">UPPPER<br>CASE</button>
+        <button onclick="lower()" id="low">lower<br>case</button>
+        <button onclick="capital()" id="cap">Capital<br>case</button>
     </div>
 
     <div id="res">
@@ -41,10 +41,15 @@
             background-color: aquamarine;
             text-align: center;
         }
+        h1{
+            font-size: 80px;
+            margin: 10px;
+        }
         #upp,
         #low,
         #cap{
-            height: 40px;
+            border-radius: 10%;
+            height: 80px;
             font-size: 30px;
             background-color: hotpink;
         }
@@ -59,6 +64,8 @@
             background-color: white;
         }
         #txt{
+            text-align: center;
+            font-size: 20px;
             height: 40px;
             width: 40%;
         }
